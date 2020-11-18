@@ -27,7 +27,7 @@ jobs:
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
     - name: Analyze with NextGen Static Analysis
-      run: .\sl analyze --app IdentityServer4Admin --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/src/IdentityServer4Admin/IdentityServer4Admin.csproj
+      run: .\sl analyze --app IdentityServer4Admin --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4Admin/IdentityServer4Admin.csproj
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
         
