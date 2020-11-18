@@ -36,12 +36,20 @@ jobs:
       id: extract_branch
     - name: Analyze with NextGen Static Analysis Admin
       run: .\sl analyze --app Admin --tag app.group=IdentityServer4 --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4Admin/IdentityServer4Admin.csproj
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Analyze with NextGen Static Analysis AspNetIdentity
       run: .\sl analyze --app AspNetIdentity --tag app.group=IdentityServer4 --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4AspNetIdentity/IdentityServer4AspNetIdentity.csproj
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Analyze with NextGen Static Analysis Empty
       run: .\sl analyze --app Empty --tag app.group=IdentityServer4 --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4Empty/IdentityServer4Empty.csproj
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Analyze with NextGen Static Analysis EntityFramework
       run: .\sl analyze --app EntityFramework --tag app.group=IdentityServer4 --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4EntityFramework/IdentityServer4EntityFramework.csproj
+      env:
+        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Analyze with NextGen Static Analysis InMem
       run: .\sl analyze --app InMem --tag app.group=IdentityServer4 --tag branch=${{ github.head_ref || steps.extract_branch.outputs.branch }} --csharp --dotnet-core --cpg src/IdentityServer4InMem/IdentityServer4InMem.csproj
       env:
